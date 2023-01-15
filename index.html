@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <title>Book Finder</title>
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  </head>
+  <body>
+     <!--The top navbar -->
+        
+     <div class="topnav" id="myTopnav">
+      
+    
+      <a href="./bookshelf.html" >Book Shelf</a>
+      <a href="./index.html" class="active" >Home</a>
+      <!--Toggle Navbar-->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="container">
+      <div id="title" class="center">
+        
+        <h1 id="header" class="text-center mt-5">Search For a Book</h1>
+        <br><br>
+        <br><div   class="row">
+          <p style="color:black;"><b>Number of Results: <input id="resize" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12" id="resize" type="number"></b> </p> 
+        </div>
+        <div class="row">
+          <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
+            <input id="search-box" type="text" class="form-control" placeholder="Type here ... e.g. python">
+            <button id="search" class="btn btn-primary" onclick="">Search</button>
+        </div>
+       
+        </div>
+        
+      </div>
+      <div class="book-list" >
+        <h2 class="text-center" style="color: white;">Book Search Result</h2>
+
+        <div id="output-list" class="">
+          <div class="row">
+            <!-- The Cards -->
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+   
+
+
+
+
+
+
+
+
+<!-- Bootstraps links-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <!--The online source  of JQuery-->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+    <!-- The local css file-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- The local js file-->
+    <script src="js/index.js"></script>
+  </body>
+</html>

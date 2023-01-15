@@ -1,0 +1,128 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Book View</title>
+    <link rel="stylesheet" href="./css/view.css">
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    </head>
+    
+    <body>
+       <!--The top navbar -->
+        
+     <div class="topnav" id="myTopnav">
+      
+    
+      <a href="./bookshelf.html" >Book Shelf</a>
+      <a href="./index.html"  >Home</a>
+      <a href="#" class="active" >Book Details</a>
+      <!--Toggle Navbar-->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+      
+      
+
+       <div class="small-container single-product">
+      <div class="row">
+          <div class="col-2">
+            <img src="" id="img1" alt="" width="100%" style="margin-right: 20px;">
+              
+          </div>
+          <div class="col-2">
+              <p>Book | Description</p>
+              <h1 id="booktitle"></h1>
+              
+             
+             
+              
+              <h3 style="color: red;"> <u>Product Details</u><i class="fa fa-indent"></h3>
+                  <br>
+                  <div class="details">
+
+                    <h5 id="bookprice"></h5><br>
+                    <h5 id="bookauthors"></h5><br>
+                    <h5 id="bookpublisher"></h5><br>
+                    <h5 id="bookpubdate"></h5><br>
+                  </div>
+                  <p id="nopages"></p>
+
+                  
+          </div>
+      </div>
+      
+  </div>
+  <div class="describe">
+   <h4 >Book Description</h4>
+    <p id="bookdescription"></p>
+  </div>
+
+
+  <!--js-->
+<script type="text/javascript">
+  
+  
+
+    //incase the img not present: the placeholder from placeholder.com
+var pHolder = '<img src="https://via.placeholder.com/150">';
+     //url
+     var index = document.URL.indexOf('?');
+   
+     if (index > 0) {
+         var bookIsbn = document.URL.substring(index, document.URL.length).split("=")[1]
+         
+     }
+     console.log(bookIsbn);
+     getBookDetails(bookIsbn);
+    async function getBookDetails(isbn) {
+
+
+var url2 = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn;
+           
+
+
+ var response = await fetch(url2);
+var results = await response.json();
+console.log(results);
+if (results.totalItems) {
+ // Getting the values
+ var book = results.items[0];
+ console.log(book);
+
+ var title = book['volumeInfo']['title'];
+ 
+ 
+ Img1 = (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : pHolder ;
+ 
+ var price=book['saleInfo']['saleability'];
+ var authors = book['volumeInfo']['authors'];
+ var printType = book['volumeInfo']['printType'];
+ var pageCount = book['volumeInfo']['pageCount'];
+ var description = book['volumeInfo']['description'];
+ var publisher = book['volumeInfo']['publisher'];
+ var publishedDate = book['volumeInfo']['publishedDate'];
+
+
+
+}
+//Assigning the details to the html elements
+document.getElementById("booktitle").innerHTML=title;
+document.querySelector("#img1").src=Img1;
+document.querySelector("#bookprice").innerHTML="Sale Ability: "+price;
+document.querySelector("#bookdescription").innerHTML=description;
+document.querySelector("#bookauthors").innerHTML="Author(s): "+ authors;
+document.querySelector("#bookpublisher").innerHTML="Publisher(s): "+ publisher;
+document.querySelector("#bookpubdate").innerHTML="Date of Publication: "+ publishedDate;
+document.querySelector("#nopages").innerHTML="Book Size: "+pageCount+" pages";
+
+
+
+}
+
+
+
+ </script>
+  </body>
+</html>
